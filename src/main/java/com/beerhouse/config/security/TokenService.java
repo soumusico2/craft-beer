@@ -24,13 +24,26 @@ public class TokenService {
 		
 		Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
 		
+		Date hoje = new Date(); 
+		Date dateExpiracao = new Date(hoje.getTime()+ Long.parseLong(expiration));
+		
 		return Jwts.builder()
 				.setIssuer("API craft-beer")
 				.setSubject(usuarioLogado.getId().toString())
-				.setIssuedAt(new Date())
-				.setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(expiration)))
-				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
+				.setIssuedAt(hoje)
+				.setExpiration(dateExpiracao)
+				.signWith(SignatureAlgorithm.HS256, secret)
 				.compact();
+	}
+
+	public boolean isTokenValido(String token) {
+		try {
+			Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 }
