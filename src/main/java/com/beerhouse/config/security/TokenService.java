@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.beerhouse.modelo.Usuario;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -44,6 +45,12 @@ public class TokenService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public Long getIdUsuario(String token) {
+		Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
+		Long claimsLong = Long.parseLong(claims.getSubject());
+		return claimsLong;
 	}
 	
 }
