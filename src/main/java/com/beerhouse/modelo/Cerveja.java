@@ -30,7 +30,16 @@ public class Cerveja implements Serializable {
 
 
 	public Cerveja() {}
-	
+
+	public Cerveja(Long id, String nome, String quantidade, String tipo, String categoria, String origem) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.quantidade = quantidade;
+		this.tipo = tipo;
+		this.categoria = categoria;
+		this.origem = origem;
+	}
 
 	public Long getId() {
 		return id;
