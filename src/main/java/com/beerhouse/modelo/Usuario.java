@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class Usuario implements UserDetails {
 	private String senha;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@CollectionTable(name="PERFIS")
 	private List<Perfil> perfis = new ArrayList<>();
 	
 	/*
@@ -40,7 +42,13 @@ public class Usuario implements UserDetails {
 	 */
 	public Usuario() {}
 	
-	
+	public Usuario(Long id, String nome, String email, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}
