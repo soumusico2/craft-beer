@@ -1,7 +1,8 @@
 spring:
   datasource:
     url: mysql://be7b9fafb9988a:4c060a11@us-cdbr-east-04.cleardb.com/heroku_5e244f10204d886?reconnect=true
+    driverClassName: com.mysql.jdbc.Driver
   jpa:
     hibernate.ddl-auto: none
-    generate-ddl: true
-    show-sql: true
+    show-sql: false
+    

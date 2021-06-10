@@ -1,0 +1,16 @@
+server:
+  port: 9000
+ 
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/craftbeer?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: phlengm22
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: true
+    show-sql: true
+
+jwt.secret: testeTokenSecretJwt
+jwt.expiration: 600000
