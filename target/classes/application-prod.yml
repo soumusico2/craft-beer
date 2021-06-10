@@ -5,6 +5,3 @@ spring:
     hibernate.ddl-auto: none
     generate-ddl: true
     show-sql: true
-
-jwt.secret: testeTokenSecretJwt
-jwt.expiration: 600000
