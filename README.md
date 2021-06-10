@@ -98,7 +98,7 @@ DELETE - https://craft-beer.herokuapp.com/cervejas/1   <br/>
 PATH - https://craft-beer.herokuapp.com/cervejas/1   <br/>
 POST - https://craft-beer.herokuapp.com/auth   <br/>
 
-- Para se autenticar é seguir o exemplo abaixo. <br/>
+- Para se autenticar é seguir o exemplo e os dados abaixo. <br/>
 {<br/>
     "email": "hebert@gmail.com",<br/>
     "senha": "123456"<br/>
