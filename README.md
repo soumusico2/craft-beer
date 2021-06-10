@@ -89,6 +89,29 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
 
 ## Seção reservada para que você descreva brevemente como executar o seu projeto
 
-Pode ser algo simples, como executar o arquivo Application.java. Ou talvez tenha alguma dependência como base de dados, por exemplo.
+Não é necessário autenticação para os endpoints de listar, buscar e de paginação.
 
-TODO
+GET - https://craft-beer.herokuapp.com/cervejas   <br/>
+GET - https://craft-beer.herokuapp.com/cervejas/1    <br/>
+GET - https://craft-beer.herokuapp.com/cervejas/page?linesPerPage=2&page=1   <br/>
+DELETE - https://craft-beer.herokuapp.com/cervejas/1   <br/>
+PATH - https://craft-beer.herokuapp.com/cervejas/1   <br/>
+POST - https://craft-beer.herokuapp.com/auth   <br/>
+
+- Para se autenticar é seguir o exemplo abaixo. <br/>
+{<br/>
+    "email": "hebert@gmail.com",<br/>
+    "senha": "123456"<br/>
+}<br/><br/>
+
+- Para se cadastrar é preciso seguir o exemplo abaixo.<br/>
+{<br/>
+       	"nome": "Teste",<br/>
+        "quantidade": "Teste",<br/>
+        "tipo": "Teste",<br/>
+        "categoria": "Teste",<br/>
+        "origem": "Teste"<br/>
+}<br/><br/>
+
+A seguir conta a URL para acessar o Swagger:<br/>
+https://craft-beer.herokuapp.com/swagger-ui.html<br/>
