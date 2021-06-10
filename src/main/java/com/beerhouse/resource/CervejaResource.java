@@ -64,9 +64,21 @@ public class CervejaResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<Page<Cerveja>> listar(@RequestParam int pagina, @RequestParam int quantidade){
+	public ResponseEntity<List<Cerveja>> listar(){
 		
-		Page<Cerveja> cervejas = cervejaService.listar(pagina, quantidade);
+		List<Cerveja> cervejas = cervejaService.listar();
+		
+		return ResponseEntity.ok().body(cervejas);
+	}
+	
+	@RequestMapping(value="page", method=RequestMethod.GET)
+	public ResponseEntity<Page<Cerveja>> findPage(
+			@RequestParam(value="page", defaultValue="0") Integer page, 
+			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
+			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
+			@RequestParam(value="direction", defaultValue="ASC") String direction){
+		
+		Page<Cerveja> cervejas = cervejaService.findPage(page, linesPerPage, orderBy, direction);
 		
 		return ResponseEntity.ok().body(cervejas);
 	}

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,13 +80,19 @@ public class CervejaService {
 		return ResponseEntity.notFound().build();
 	}
 	
-	public Page<Cerveja> listar(int pagina, int quantidade) {
+	
+	public List<Cerveja> listar() {
 		
-		Pageable paginacao = (Pageable) PageRequest.of(pagina, quantidade);
-		
-		Page<Cerveja> cervejas = cervejaRepository.findAll(paginacao);
+		List<Cerveja> cervejas = cervejaRepository.findAll();
 		
 		return cervejas;
+	}
+	
+	
+	public Page<Cerveja> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		
+		return cervejaRepository.findAll(pageRequest);
 	}
 	
 
