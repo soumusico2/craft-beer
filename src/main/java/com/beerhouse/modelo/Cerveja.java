@@ -22,42 +22,15 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull 
-	@Length(min = 3, max = 15, message = "É necessário informar entre 3 e 15 caracteres - nome")
 	private String nome;
-	
-	@NotNull
-	@Length(min = 3, max = 5, message = "É necessário informar entre 3 e 5 caracteres - quantidade")
 	private String quantidade;
-	
-	@NotNull
-	@Length(min = 3, max = 15, message = "É necessário informar entre 3 e 15 caracteres - tipo")
 	private String tipo;
-	
-	@NotNull
-	@Length(min = 3, max = 15, message = "É necessário informar entre 3 e 15 caracteres - categoria")
 	private String categoria;
-	
-	@NotNull
-	@Length(min = 3, max = 15, message = "É necessário informar entre 3 e 15 caracteres- origem")
 	private String origem;
-	
+
+
 	public Cerveja() {}
 	
-	
-
-	public Cerveja(Long id, @Length(min = 3, max = 15) String nome,
-			@Length(min = 3, max = 5, message = "É necessário informar entre 3 e 5 caracteres") String quantidade,
-			@Length(min = 3, max = 15) String tipo, @Length(min = 3, max = 15) String categoria,
-			@Length(min = 3, max = 15) String origem) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.quantidade = quantidade;
-		this.tipo = tipo;
-		this.categoria = categoria;
-		this.origem = origem;
-	}
 
 	public Long getId() {
 		return id;

@@ -1,12 +1,16 @@
 package com.beerhouse.service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.beerhouse.modelo.Cerveja;
 import com.beerhouse.repository.CervejaRepository;
@@ -23,11 +27,11 @@ public class CervejaService {
 	}
 
 	@Transactional
-	public Cerveja cadastrar(Cerveja cerveja) {
+	public Cerveja cadastrar(Cerveja cervejaForm) {
 		
-		cervejaRepository.save(cerveja);
+		cervejaRepository.save(cervejaForm);
 		
-		return cerveja;
+		return cervejaForm;
 	}
 	
 	@Transactional
@@ -75,11 +79,14 @@ public class CervejaService {
 		return ResponseEntity.notFound().build();
 	}
 	
-	public List<Cerveja> listar() {
+	public Page<Cerveja> listar(int pagina, int quantidade) {
 		
-		List<Cerveja> cervejas = cervejaRepository.findAll();
+		Pageable paginacao = (Pageable) PageRequest.of(pagina, quantidade);
+		
+		Page<Cerveja> cervejas = cervejaRepository.findAll(paginacao);
 		
 		return cervejas;
 	}
+	
 
 }
